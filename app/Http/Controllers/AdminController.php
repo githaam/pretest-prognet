@@ -56,9 +56,10 @@ class AdminController extends Controller
      * @param  \App\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(admin $admin)
+    public function edit($username)
     {
-        //
+        $admin = admin::where('username', $username)->first();
+        return view('admin.edit',compact('admin'));
     }
 
     /**
@@ -68,9 +69,16 @@ class AdminController extends Controller
      * @param  \App\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, admin $admin)
+    public function update(Request $request, $username)
     {
-        //
+        $data = [
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email
+        ];
+
+        admin::where('username', $username)->update($data);
+        return redirect('admin');
     }
 
     /**

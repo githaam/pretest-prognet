@@ -23,7 +23,7 @@
             <td>{{$admin->username}}</td>
             <td>{{$admin->email}}</td>
             <td>
-                <a href="#" class="btn btn-success">
+                <a href="{{URL('admin/'.$admin->username.'/edit')}}" class="btn btn-success">
                     <i class="fa fa-pencil"></i>
                 </a>
                 <a href="#" class="btn btn-danger">
